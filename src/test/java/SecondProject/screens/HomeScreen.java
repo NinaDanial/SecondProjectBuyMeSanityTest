@@ -1,6 +1,6 @@
 package SecondProject.screens;
 
-import SecondProject.BasePage;
+import Utilities.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -8,16 +8,53 @@ public class HomeScreen extends BasePage {
     public static WebDriver driver;
     private static String value;
 
-    public void pickPricePoint() {
-        this.selectValue(By.xpath("/html/body/div[1]/div/header/div[2]/div/div/form/div[1]"));
+    /**
+     * choose a price range
+     */
+    public void pickPricePoint() throws InterruptedException {
+        try {
+            this.pickValueFromList(By.xpath("//*[@id=\"ember4842_chosen\"]/div"),4);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
     }
-    public void pickRegion() {
-        this.selectValue(By.xpath("/html/body/div[1]/div/header/div[2]/div/div/form/div[2]"));
+
+
+    /**
+     * choose a region
+     */
+    public void pickRegion() throws InterruptedException {
+        try {
+            this.pickValueFromList(By.xpath("//*[@id=\"ember1027_chosen\"]"), 2);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
-    public void pickCategory() {
-        this.selectValue(By.className("chosen-single"));
+
+
+
+    /**
+     * choose a category
+     */
+    public void pickCategory() throws Exception {
+        this.pickValueFromList(By.xpath("//*[@id=\"ember4844_chosen\"]"), 3);
     }
-    public void findAGift() {
-        this.clickElement(By.xpath("/html/body/div[1]/div/header/div[2]/div/div/form/a"));
+
+    /**
+     * search for the gift
+     */
+    public void findAGift() throws Exception {
+        this.clickElement(By.xpath("//*[@id=\"ember4847\"]"));
     }
+
+
+
+//
+//    public void pickRegion() {
+//    }
+//
+//    public void pickPricePoint() {
+//    }
 }
